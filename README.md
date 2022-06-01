@@ -1,1 +1,1 @@
-# AirBnB_clone
+In this phase of the AirBnB_clone. Malik Walker and I (Sam Alberts) are creating the AirBnB console for the backend of the AirBnB website. We are also utilizing JSON to get connected with the storage engine from and to the console in the back-end development.
