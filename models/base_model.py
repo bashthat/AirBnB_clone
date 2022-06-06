@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """The Class"""
-import uuid
+from uuid import uuid4
 from datetime import datetime
 from models import storage
 
@@ -17,28 +17,29 @@ class BaseModel:
             self.created_at = datetime.fromisoformat(kwargs['created_at'])
             self.updated_at = datetime.fromisoformat(kwargs['updated_at'])
         else:
-            self.id = str(uuid.uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
+            self.id = str(uuid4())
+            self.created_at = datetime.today()
+            self.updated_at = datetime.today()
             storage.new(self)
 
     def save(self):
         """updates to the current time"""
-        self.updated_at = datetime.now()
-        storage.save()
+        self.updated_at = datetime.today()
+        models.storage.save()
 
     def to_dict(self):
         """Return BaseModel instance
         
         includes key/value/__class__
         """
-        dictionary = vars(self).copy()
-        dictionary['__class__'] = self.__class__.__name__
-        dictionary['updated_at'] = self.updated_at.isoformat()
-        dictionary['created_at'] = self.created_at.isoformat()
-        return dictionary
+        rdict = self.__dict__.copy()
+        rdict['__class__'] = self.__class__.__name__
+        rdict['updated_at'] = self.updated_at.isoformat()
+        rdict['created_at'] = self.created_at.isoformat()
+        return rdict
 
     def __str__(self):
         """returns a string from the BaseModel instance"""
-        return '[{}] ({}) {}'.format(
-            self.__class__.__name__, self.id, self.__dict__)
+        namez = self.__class__.__name__
+        return "[{}] ({}) {}".format(
+            namez, self.id, self.__dict__)
