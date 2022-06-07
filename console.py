@@ -42,7 +42,6 @@ class HBNBCommand(cmd.Cmd):
         """
         Updates an instance
         """
-        args = args.split(' ')
         if len(args) == 0:
             print("** class name missing **")
         elif args[0] not in HBNBCommand.__classes:
