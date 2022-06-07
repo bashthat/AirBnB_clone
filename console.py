@@ -3,10 +3,6 @@
 Console for the hbnb
 """
 import cmd
-import shlex
-import re
-
-from datetime import datetime
 
 import models
 from models import FileStorage
