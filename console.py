@@ -31,7 +31,6 @@ class HBNBCommand(cmd.Cmd):
         """
         instance to create
         """
-        args = args.split(' ')
         if len(args) == 0:
             print("** class name missing **")
         elif args[0] not in HBNBCommand.__classes:
@@ -43,7 +42,6 @@ class HBNBCommand(cmd.Cmd):
         """
         Updates an instance
         """
-        args = args.split(' ')
         if len(args) == 0:
             print("** class name missing **")
         elif args[0] not in HBNBCommand.__classes:
@@ -69,7 +67,6 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, *args):
         """ Prints all instances """
-        args = args.split(' ')
         if args[0] == ' ':
             print(storage.all())
         elif args and args[0] not in HBNBCommand.__classes:
@@ -82,7 +79,6 @@ class HBNBCommand(cmd.Cmd):
         """
         counts the instances
         """
-        args = args.split(' ')
         if len(args) == 0:
             print("** class name missing **")
         elif args[0] not in HBNBCommand.__classes:
