@@ -56,3 +56,11 @@ class HBNBCommand(cmd.Cmd):
         """
 
         return FileStorage.__objects
+    
+    def _create(self, arg):
+        """Create new instance of class, saves it and prints the id"""
+        args = arg.split()
+        if self.validate_arg(args, False, False):
+            obj = storage.classes()[args[0]]()
+            obj.save()
+            print(obj.id)
