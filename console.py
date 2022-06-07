@@ -25,18 +25,6 @@ class HBNBCommand(cmd.Cmd):
                  'State': State, 'City': City, 'Amenity': Amenity,
                  'Place': Place, 'Review': Review}
     
-    def parseline(self, line):
-        """perform processing for command"""
-        if '.' in line and '(' in line and ')' in line:
-            toks = re.split(r'\.|\(|\)', line)
-            toks[2] = toks[2].strip('"').replace(',', ' ')
-            newline = toks[1] + ' ' + toks[0] + ' ' + toks[2]
-            line = (toks[1], toks[0] + ' ' + toks[2], newline)
-            if toks[1] == 'count':
-                self.count(toks[0])
-                return cmd.Cmd.parseline(self, '')
-            return line
-        return cmd.Cmd.parseline(self, line)
 
     def do_create(self, *args):
         """
