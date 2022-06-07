@@ -87,8 +87,9 @@ class HBNBCommand(cmd.Cmd):
             print(len([v for k, v in storage.all().items()
                        if args[0] in k]))
 
-    def do_show(self, *args):
+    def do_show(self, args):
         """Prints the instance"""
+        args = args.split(' ')
         if len(args) == 0:
             print("** class name missing **")
         elif args[0] not in HBNBCommand.__classes:
