@@ -1,18 +1,21 @@
 #!/usr/bin/python3
-""" FileStorage class """
+""" 
+FileStorage class
+utilizing datetime, json, os
+"""
 import datetime
 import json
 import os
 
 
 class FileStorage:
-    """ FileStorage class """
+    """FileStorage json"""
     __file_path = "file.json"
     __objects = {}
 
     def classes(self):
         """
-        Returns a dict of classes
+        Returns dict of classes
         """
 
         from models.base_model import BaseModel
