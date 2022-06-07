@@ -6,7 +6,7 @@ import cmd
 import re
 import shlex
 
-from models import FileStorage
+from models import storage
 from models.base_model import BaseModel
 from models.user import User
 from models.state import State
@@ -55,24 +55,24 @@ class HBNBCommand(cmd.Cmd):
 
         else:
             key = args[0] + '.' + args[1]
-            if key in FileStorage.all().keys():
+            if key in storage.all().keys():
                 if args[2] in ['created_at', 'updated_at']:
                     print("** attribute name cannot be 'created_at' or "
                           "'updated_at' **")
                 else:
-                    FileStorage.all()[key].__dict__[args[2]] = args[3]
-                    FileStorage.all()[key].save()
+                    storage.all()[key].__dict__[args[2]] = args[3]
+                    storage.all()[key].save()
             else:
                 print("** no instance found **")
 
     def do_all(self, *args):
         """ Prints all instances """
         if args[0] == '':
-            print(models.storage.all())
+            print(storage.all())
         elif args and args[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
         else:
-            print([str(v) for k, v in models.storage.all().items()
+            print([str(v) for k, v in storage.all().items()
                    if args[0] in k])
 
     def do_count(self, *args):
@@ -84,7 +84,7 @@ class HBNBCommand(cmd.Cmd):
         elif args[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
         else:
-            print(len([v for k, v in FileStorage.all().items()
+            print(len([v for k, v in storage.all().items()
                        if args[0] in k]))
 
     def do_show(self, *args):
@@ -97,8 +97,8 @@ class HBNBCommand(cmd.Cmd):
             print('** instance id missing **')
         else:
             key = args[0] + '.' + args[1]
-            if key in FileStorage.all().keys():
-                print(FileStorage.all()[key])
+            if key in storage.all().keys():
+                print(storage.all()[key])
             else:
                 print("** no instance found **")
 
@@ -112,9 +112,9 @@ class HBNBCommand(cmd.Cmd):
             print('** instance id missing **')
         else:
             key = args[0] + '.' + args[1]
-            if key in FileStorage.all().keys():
-                del FileStorage.all()[key]
-                FileStorage.save()
+            if key in storage.all().keys():
+                del storage.all()[key]
+                storage.save()
             else:
                 print("** no instance found **")
 
