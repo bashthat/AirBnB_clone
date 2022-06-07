@@ -75,7 +75,7 @@ class HBNBCommand(cmd.Cmd):
             print([str(v) for k, v in storage.all().items()
                    if args[0] in k])
 
-    def do_count(self, *args):
+    def do_count(self, args):
         """
         counts the instances
         """
@@ -124,15 +124,15 @@ class HBNBCommand(cmd.Cmd):
         """
         print("*** Unknown syntax: {}".format(line))
 
-    def do_quit(self, *args):
+    def do_quit(self, args):
         """ Quits the application"""
         return True
 
-    def do_exit(self, *args):
+    def do_exit(self, args):
         """ Quits the application"""
         return True
 
-    def do_EOF(self, *args):
+    def do_EOF(self, args):
         """ Quits the application with an end of file"""
         return True
 
