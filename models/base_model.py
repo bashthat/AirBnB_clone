@@ -2,7 +2,7 @@
 """The Class"""
 from uuid import uuid4
 from datetime import datetime
-from models import Storage
+import model
 
 
 
