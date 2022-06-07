@@ -3,8 +3,9 @@
 Console for the hbnb
 """
 import cmd
+import Models
+import re
 
-import models
 from models import FileStorage
 from models.base_model import BaseModel
 from models.user import User
