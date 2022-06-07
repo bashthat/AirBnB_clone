@@ -20,7 +20,7 @@ class BaseModel:
             self.id = str(uuid4())
             self.created_at = datetime.today()
             self.updated_at = datetime.today()
-            storage.new(self)
+            models.storage.new(self)
 
     def save(self):
         """updates to the current time"""
