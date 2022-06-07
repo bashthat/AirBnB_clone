@@ -3,7 +3,6 @@
 Console for the hbnb
 """
 import cmd
-import model
 import re
 
 from models import FileStorage
