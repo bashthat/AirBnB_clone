@@ -4,6 +4,7 @@ Console for the hbnb
 """
 import cmd
 import re
+import shlex
 
 from models import FileStorage
 from models.base_model import BaseModel
