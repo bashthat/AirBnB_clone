@@ -25,7 +25,7 @@ class BaseModel:
     def save(self):
         """updates to the current time"""
         self.updated_at = datetime.today()
-        models.storage.save()
+        storage.save()
 
     def to_dict(self):
         """Return BaseModel instance
