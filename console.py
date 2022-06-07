@@ -1,66 +1,147 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
+""" 
+Console for the hbnb
+"""
 import cmd
+import shlex
 import re
-from shlex import split
-from models import storage
+
+from datetime import datetime
+
+import models
+from models import FileStorage
 from models.base_model import BaseModel
 from models.user import User
 from models.state import State
 from models.city import City
-from models.place import Place
 from models.amenity import Amenity
+from models.place import Place
 from models.review import Review
-
-"""parser for the console to function like that
-of a getline() for a C shell example
-"""
-
-
-def parse(arg):
-    curly_braces = re.search(r"\{(.*?)\}", arg)
-    brackets = re.search(r"\[(.*?)\]", arg)
-    if curly_braces is None:
-        if brackets is None:
-            return [i.strip(",") for i in split(arg)]
-        else:
-            lexer = split(arg[:brackets.span()[0]])
-            retl = [i.strip(",") for i in lexer]
-            retl.append(brackets.group())
-            return retl
-    else:
-        lexer = split(arg[:curly_braces.span()[0]])
-        retl = [i.strip(",") for i in lexer]
-        retl.append(curly_braces.group())
-        return retl
 
 
 class HBNBCommand(cmd.Cmd):
     """
-    the HBNB command prompt for the command line.
+    handling the HBNB application
     """
 
-    prompt = "(hbnb) "
-    __classes = {
-        "BaseModel",
-        "User",
-        "State",
-        "City",
-        "Place",
-        "Amenity",
-        "Review"
-    }
-    
-    def all(self):
-        """
-        Returns all the objects
-        """
+    prompt = '(hbnb) '
+    __classes = {'BaseModel': BaseModel, 'User': User,
+                 'State': State, 'City': City, 'Amenity': Amenity,
+                 'Place': Place, 'Review': Review}
 
-        return FileStorage.__objects
-    
-    def _create(self, arg):
-        """Create new instance of class, saves it and prints the id"""
-        args = arg.split()
-        if self.validate_arg(args, False, False):
-            obj = storage.classes()[args[0]]()
-            obj.save()
-            print(obj.id)
+    def do_create(self, *args):
+        """
+        instance to create
+        """
+        if len(args) == 0:
+            print("** class name missing **")
+        elif args[0] not in HBNBCommand.__classes:
+            print("** class doesn't exist **")
+        else:
+            print(args[0] + "." + str(eval(args[0] + "()")))
+
+    def do_update(self, *args):
+        """
+        Updates an instance
+        """
+        if len(args) == 0:
+            print("** class name missing **")
+        elif args[0] not in HBNBCommand.__classes:
+            print("** class doesn't exist **")
+        elif len(args) < 2:
+            print('** instance id missing **')
+        elif len(args) < 3:
+            print('** attribute name missing **')
+        elif len(args) < 4:
+            print('** value missing **')
+
+        else:
+            key = args[0] + '.' + args[1]
+            if key in FileStorage.all().keys():
+                if args[2] in ['created_at', 'updated_at']:
+                    print("** attribute name cannot be 'created_at' or "
+                          "'updated_at' **")
+                else:
+                    FileStorage.all()[key].__dict__[args[2]] = args[3]
+                    FileStorage.all()[key].save()
+            else:
+                print("** no instance found **")
+
+    def do_all(self, *args):
+        """ Prints all instances """
+        if args[0] == '':
+            print(models.storage.all())
+        elif args and args[0] not in HBNBCommand.__classes:
+            print("** class doesn't exist **")
+        else:
+            print([str(v) for k, v in models.storage.all().items()
+                   if args[0] in k])
+
+    def do_count(self, *args):
+        """
+        counts the instances
+        """
+        if len(args) == 0:
+            print("** class name missing **")
+        elif args[0] not in HBNBCommand.__classes:
+            print("** class doesn't exist **")
+        else:
+            print(len([v for k, v in FileStorage.all().items()
+                       if args[0] in k]))
+
+    def do_show(self, *args):
+        """Prints the instance"""
+        if len(args) == 0:
+            print("** class name missing **")
+        elif args[0] not in HBNBCommand.__classes:
+            print("** class doesn't exist **")
+        elif len(args) < 2:
+            print('** instance id missing **')
+        else:
+            key = args[0] + '.' + args[1]
+            if key in FileStorage.all().keys():
+                print(FileStorage.all()[key])
+            else:
+                print("** no instance found **")
+
+    def do_destroy(self, *args):
+        """destroy the instance! """
+        if len(args) == 0:
+            print("** class name missing **")
+        elif args[0] not in HBNBCommand.__classes:
+            print("** class doesn't exist **")
+        elif len(args) < 2:
+            print('** instance id missing **')
+        else:
+            key = args[0] + '.' + args[1]
+            if key in FileStorage.all().keys():
+                del FileStorage.all()[key]
+                FileStorage.save()
+            else:
+                print("** no instance found **")
+
+    def default(self, line):
+        """
+        consoles default.
+        """
+        print("*** Unknown syntax: {}".format(line))
+
+    def do_quit(self, *args):
+        """ Quits the application"""
+        return True
+
+    def do_exit(self, *args):
+        """ Quits the application"""
+        return True
+
+    def do_EOF(self, *args):
+        """ Quits the application with an end of file"""
+        return True
+
+    def emptyline(self):
+        """ empty line"""
+        pass
+
+
+if __name__ == '__main__':
+    HBNBCommand().cmdloop()
