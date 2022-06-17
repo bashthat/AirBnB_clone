@@ -2,9 +2,11 @@ footer{
   Background-color: white;
   height: 60px;
   width: 100%;
-  border-top: solid 1px #CCCCCC
-  position: fixed;
+  position: absolute;
+  border-top: 1px solid #CCCCCC;
   bottom: 0;
   text-align: center;
+  align-items: center;
+  justify-content: center;
   line-height: 60px;
 }
