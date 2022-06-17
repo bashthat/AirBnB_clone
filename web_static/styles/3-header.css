@@ -8,9 +8,12 @@ header{
 .logo{
 height: 142px;
 width: 60px;
-Background: url(https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/logo.png);
+background-size: contain;
+Background-image: url(https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/logo.png);
 background-repeat: no-repeat;
-position: relative;
+background-position: inherit;
+z-index: auto;
+
 padding-left: 20px;
 align-items: center;
 }
