@@ -7,13 +7,12 @@ header{
 }
 .logo{
 height: 142px;
-width: 60px;
-background-size: contain;
+width: inherit;
+background-size: initial;
 Background-image: url(https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/logo.png);
 background-repeat: no-repeat;
-background-position: inherit;
+position: relative;
 z-index: auto;
-
 padding-left: 20px;
-align-items: center;
+align-items: inherit;
 }
