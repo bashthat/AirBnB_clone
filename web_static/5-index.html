@@ -1,28 +1,51 @@
 <!DOCTYPE html>
-<html>
+<!--number zero has notes in the readme as an example, this is giving the css a new home with the style guide.-->
+<html lang="en">
+  <!--https://www.w3schools.com/html/html_css.asp || https://stackoverflow.com/questions/17621324/relative-path-to-css-file || style links-->
+
+<!--[an important note]>
+
+  link rel="stylesheet" type="text/css" href="/css/styles.css"
+  
+  <![endif]-->
 <head>
-<title>AirBnB_clone</title>
-</head>
-<body>
-<embed type="image";
-  src="https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/icon.png";>
-<header>
-<div class="container">
-<embed type="image";
-       src="https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/logo.png";>
+        <title>Airbnb Clone</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"><!--UI format-->
+        <link rel="icon" type="icon/png" href="https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/icon.png">
+        <link rel="stylesheet" href="../styles/4-common.css">
+        <link rel="stylesheet" href="../styles/4-filters.css">        
+        <!--[modeling the css for the other file.. going mobile on the css files]>     
+  body {background-color: powderblue;}
+  h1 {color: red;}
+  p {color: blue;}
+  <![endif]-->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        </head>
+        
+        <body>
+        
+        <h1></h1>
+        
+        <header>
+        
+        <div class="logo"></div>
+        </header>
+        
+        <div class="container">
+        <section class="filters">
+        <div class="locations">
+          <h3>States</h3>
+          <h4>Rhode Island, North Carolina, Massechussetts, New York</h4>
+        </div>
+        <div class="amenities">
+          <h3>Amenities</h3>
+          <h4>Resturaunts, Music, Laundry, Internet</h4>
+        </div>
+        <button>Search</button>
+        </section>
+        </div>
 
-<form class="button" action="Search.php">
-  <input type="text" placeholder="Search.." name="search">
-  <button type="submit"><i class="fa fa-search"></i></button>
-</form>
-
-<h1></h1>
-
-<p></p>
-</div>
-</header>
-</body>
-<footer>Best School</footer>
-</html> 
+        
+        <footer>Best School</footer>
+      </body>
+        </html> 
