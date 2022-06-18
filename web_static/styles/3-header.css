@@ -5,6 +5,7 @@ header{
   border-bottom: solid 1px #CCCCCC;
   display: flex;
 }
+
 .logo{
 height: 142px;
 width: inherit;
