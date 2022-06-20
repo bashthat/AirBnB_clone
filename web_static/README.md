@@ -1,5 +1,5 @@
-<--in this file I give the example HTML file for the static web presence given the inline format of the code. I have developed the "french" version, had some fun and left all my resources here before breaking down the code more!-->
 <!DOCTYPE html>
+<!--in this file I give the example HTML file for the static web presence given the inline format of the code. I have developed the "french" version, had some fun and left all my resources here before breaking down the code more!-->
 <!--the webstatic html page -->
 <!--https://www.webnots.com/basics-of-a-static-website/-->
 <!-- according to w3.org, there is the need to always declare a language-->
