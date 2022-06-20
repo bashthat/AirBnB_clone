@@ -28,18 +28,17 @@ section.filters button:hover{
 }
 
 .locations{
+    border-right: 1px solid #DDDDDD;
     width: 25%;
     height: 100%;
-    padding-left: 50px;
-    border-right: 1px #DDDDDD;
 }
 
-.locations h3{
+.filters h3{
     font-weight: 600;
     margin: 12px 0 5px 0;
 }
 
-.locations h4{
+.filters h4{
     font-weight: 400;
     font-size: 14px;
     margin: 0 0 0 0;
@@ -48,15 +47,4 @@ section.filters button:hover{
 .amenities{
     width: 25%;
     height: 100%;
-    padding-left: 50px;
-}
-
-.amenities h3{
-    font-weight: 600;
-    margin: 12px 0 5px 0;
-}
-.amenities h4{
-    font-weight: 400;
-    font-size: 14px;
-    margin: 0 0 0 0;
 }
